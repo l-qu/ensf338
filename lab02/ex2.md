@@ -17,3 +17,5 @@ If the dataset is unsorted, linear search will work while binary and interpolati
 If the target is the first element in the dataset, linear search will outperform both binary and interpolation because it will find the element on its first check, while binary will start looking in the middle and interpolation will try to estimate its position. 
 
 6. Is there a way to improve binary and interpolation search to solve this issue?
+
+There are not many ways to improve binary and interpolations searches without changing the algorithm completely. However, the interpolation search could estimate lower in its position search so it has a better chance of catching the first element. This may not be ideal for all cases of using interpolation search. Since interpolation search and binary search are already much faster on average when compared to a linear search, the linear search outperforming both binary and interpolation searches would be in rarer cases.
