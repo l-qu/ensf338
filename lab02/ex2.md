@@ -11,9 +11,9 @@ Yes, the performance will be affected. This is because the interpolation search'
 The line `pos = low + int(((float(high-low) / (arr[high] - arr[low])) * (x - arr[low])))` would be affected. This is a calculation of the expected position of the element using linear interpolation, which only works if the data is uniformly distributed. If we wanted it to follow a different distribution, we would need to modify this position calculation to accomodate for that.
 
 4. When is linear search your only option for searching data as binary and interpolation search may fail?
+If the dataset is unsorted, linear search will work while binary and interpolation will both fail, as they require data to be sorted in order to perform properly.
 
 5. In which case will linear search outperform both binary and interpolation search, and why?
-If the target is the first element in the dataset, linear search will outperform both binary and interpolation because it will find the element on its first check, while binary will start looking in the middle and interpolation will try
-e to
+If the target is the first element in the dataset, linear search will outperform both binary and interpolation because it will find the element on its first check, while binary will start looking in the middle and interpolation will try to estimate its position. 
 
 6. Is there a way to improve binary and interpolation search to solve this issue?
