@@ -1,0 +1,1 @@
+# 1. this code calculates the fibonacci sequence
