@@ -57,7 +57,7 @@ for i in range(36):
 
 plt.clf()
 plt.scatter(inputBetter, timesBetter)
-plt.title("Optimized function supposedly")
+plt.title("Optimized function")
 plt.xlabel("Number of inputs")
 plt.ylabel("Time (seconds)")
 plt.savefig("output1.6.2.jpg")
