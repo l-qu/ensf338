@@ -18,7 +18,7 @@ def func(n):
 
 # 4.   
 def funcBetter(n):
-    cache = [None]*(n + 1)
+    # cache = [None]*(n + 1)
         
     if n == 0 or n == 1:
         return n
@@ -28,6 +28,8 @@ def funcBetter(n):
 
     cache[n] = funcBetter(n - 1) + funcBetter(n - 2)
     return cache[n]
+
+cache = [None]*(36)
 
 # 5. The new time complexity is O().
 
@@ -44,8 +46,8 @@ plt.scatter(input, times)
 plt.title("Original function")
 plt.xlabel("Number of inputs")
 plt.ylabel("Time (seconds)")
-# plt.savefig("output1.6.1.jgp")
-plt.show()
+plt.savefig("output1.6.1.jpg")
+# plt.show()
 
 inputBetter = []
 timesBetter = []
@@ -60,5 +62,5 @@ plt.scatter(inputBetter, timesBetter)
 plt.title("Optimized function supposedly")
 plt.xlabel("Number of inputs")
 plt.ylabel("Time (seconds)")
-# plt.savefig("output1.6.2.jgp")
-plt.show()
+plt.savefig("output1.6.2.jpg")
+# plt.show()
