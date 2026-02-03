@@ -17,9 +17,7 @@ def func(n):
         return func(n - 1) + func(n - 2)
 
 # 4.   
-def funcBetter(n):
-    # cache = [None]*(n + 1)
-        
+def funcBetter(n):        
     if n == 0 or n == 1:
         return n
     
@@ -29,8 +27,6 @@ def funcBetter(n):
     cache[n] = funcBetter(n - 1) + funcBetter(n - 2)
     return cache[n]
 
-cache = [None]*(36)
-
 # 5. The new time complexity is O().
 
 # 6.
@@ -38,6 +34,7 @@ input = []
 times = []
 
 for i in range(36):
+    cache = [None] * (i + 1)
     time = timeit.timeit(lambda: func(i), number=1)
     input.append(i)
     times.append(time)
@@ -53,6 +50,7 @@ inputBetter = []
 timesBetter = []
 
 for i in range(36):
+    cache = [None] * (i + 1)
     time = timeit.timeit(lambda: funcBetter(i), number=1)
     inputBetter.append(i)
     timesBetter.append(time)
