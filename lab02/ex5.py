@@ -2,14 +2,13 @@ import timeit
 from random import randint
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.interpolate import interp1d
 
 def linear_search(data, target):
     length = len(data)
-
     for i in range(length):
         if data[i] == target:
             return i
-    
     return -1
 
 def binary_search(data, target):
@@ -35,39 +34,46 @@ run_numbers = [1000, 2000, 4000, 8000, 16000, 32000]
 repeat_runs = 1000
 number_runs = 100
 
-time_linear_all = []
+time_linear_average_all = []
 time_linear_average = 0
 for i in range(6):
     time_linear = timeit.repeat(lambda: linear_search(list(range(run_numbers[i])), randint(0, run_numbers[i])), repeat=repeat_runs, number=number_runs)
-    time_linear_all.append(time_linear)
     
     for j in range(len(time_linear) - 1):
         time_linear_average += time_linear[j]
     
-    print(f"The average time taken for the linear search to find a point in an array of {run_numbers[i]} is: {time_linear_average / 1000}")
+    time_linear_average_all.append(time_linear_average / 1000)
+    print(f"Time for linear average of {run_numbers[i]} data size is: {time_linear_average}")
     time_linear_average = 0
 
-# for i in range(6):
-#     plt.scatter(range(1000), time_linear_all[i])
-#     plt.title("Linear Graph")
-#     plt.xlabel("Number of inputs")
-#     plt.ylabel("Time (seconds)")
-#     plt.show()
+y = np.array(time_linear_average_all)
+x = np.array(run_numbers)
+
+x_dense_grid = np.linspace(min(x), max(x), 200)
+linear_interp = interp1d(x, y, kind = "linear")
+linear_y = linear_interp(x_dense_grid)
+
+plt.scatter(x, y)
+plt.plot(x_dense_grid, linear_y, label = "Linear Interpolation", linestyle = "--")
+plt.legend()
+plt.title("Linear Search Interpolation Graph")
+plt.xlabel("Number of averages (1000-32000 pieces of data)")
+plt.ylabel("Time (seconds)")
+plt.show()
 
 print("\n", "-" * 100, "\n")
 
-time_binary_all = []
+time_binary_average_all = []
 time_binary_average = 0
 for i in range(6):
     time_binary = timeit.repeat(lambda: binary_search(list(range(run_numbers[i])), randint(0, run_numbers[i])), repeat=repeat_runs, number=number_runs)
-    time_binary_all.append(time_binary)
     
     for j in range(len(time_binary) - 1):
         time_binary_average += time_binary[j]
     
     print(f"The average time taken for the binary search to find a point in an array of {run_numbers[i]} is: {time_binary_average / 1000}")
+    time_binary_average_all.append(time_binary_average / 1000)
     time_linear_average = 0
-
 
 # plt.scatter(range(1000), time_binary)
 # plt.title("Binary Graph")
