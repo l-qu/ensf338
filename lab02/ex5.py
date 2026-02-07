@@ -84,4 +84,13 @@ plt.xlabel("Number of averages (1000-32000 pieces of data)")
 plt.ylabel("Time (seconds)")
 plt.show()
 
-# 4: 
+# 4: For the linear interpolating function, the scipy.interp1d function was used to interpolate the linear data. 
+#    To make the function, the parameters needed are the x value of the data (in this case, the number of runs), the y data (in this case, the average time taken for each run) and the type of data the user wishes to interpolate which in this case, was linear. 
+#    When actually using the function, it required a more dense array of times for its first parameter. For this, np.linspace() was used to generate the in betweens of the times for a more accurate x data set. 
+#    Once the y values were interpolated, it was simply graphed alongside the original function. The values gotten from the timeit fuctions followed this line, which tells us that the linear search is implemented correctly with a time complexity of O(n).
+
+#    For the binary interpolating function, the scipy.optimize.curve_fit was used to make the functions and the fuction log_func was made along with it.
+#    The log_func simply returns the formula of y = a*log(x) + b and is put into the scipy curve_fit function alongside the x values (number of runs) and the y values (the average time taken for each number of runs).
+#    The params are what the curve_fit function thinks the best parameters of a and b are, and the covariance is the measure of how uncertain the estimates of params are.
+#    The x values are made dense with the np.linespace function, much like in the linear interpolation, and then plugged into the log_func to get new esatimated y values following the logarithmic complexity.
+#    Once graphed alongside the original values obtained, the original values follow closely to the interpolated data, making the binary search implemented a logarithmic complexity of O(log(n)).
