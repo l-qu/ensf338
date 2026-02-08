@@ -27,7 +27,7 @@ def funcBetter(n):
     cache[n] = funcBetter(n - 1) + funcBetter(n - 2)
     return cache[n]
 
-# 5. The new time complexity is O().
+# 5. The new time complexity is O(n).
 
 # 6.
 input = []
