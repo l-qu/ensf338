@@ -1,10 +1,19 @@
+import numpy as np
+from random import randint
+import matplotlib.pyplot as plt
+
 def bubble_sort(arr):
     for i in range(len(arr)):
+        no_swap_occurred = True
         for j in range(len(arr) - i - 1):
             if arr[j] > arr[j + 1]:
+                no_swap_occurred = False
                 temp = arr[j]
                 arr[j] = arr[j + 1]
                 arr[j + 1] = temp
+            
+        if no_swap_occurred:
+            break
     return arr
 
 # helper method for median_pivot_index
@@ -71,3 +80,4 @@ def quick_sort(arr, low=0, high=None):
 
         quick_sort(arr, low, pivot_index)
         quick_sort(arr, pivot_index + 1, high)
+
